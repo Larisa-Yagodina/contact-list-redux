@@ -9,7 +9,6 @@ function ModalWindow(props) {
     const {isOpen, title, action} = props.modal;
     const contact = props.modal.data;
 
-
     const [name, setName] = useState(action === "UPDATE_CONTACT" ?  contact.name : "");
     const [phoneNumber, setPhoneNumber] = useState(action === "UPDATE_CONTACT" ? contact.phoneNumber : "");
     const [address, setAddress] = useState(action === "UPDATE_CONTACT" ? contact.address : "");

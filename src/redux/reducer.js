@@ -17,11 +17,6 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case 'GET_CARDS':
-            return {
-                ...state
-            }
-
         case "OPEN_MODAL":
             return {
                 ...state, modalWindow: {...state.modalWindow,
