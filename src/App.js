@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.css"
+import TableWrapper from "./TableWrapper";
+import Modal from "./ModalWindow";
+import {useState} from "react";
+import AddNewContact from "./AddNewContact";
+import {connect} from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(props) {
+
+    const [open, setOpen] = useState(false);
+
+    const toggle = () => {
+        setOpen(!open)
+    };
+
+    return (
+        <div className="container">
+            <h1>Contact List</h1>
+            <AddNewContact/>
+            <TableWrapper/>
+            {props.isOpen && <Modal/>}
+        </div>
+    );
 }
 
-export default App;
+const mapStateToProps = state => ({
+    isOpen: state.modalWindow.isOpen,
+})
+
+export default connect(mapStateToProps, null)(App);
